@@ -1,0 +1,38 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+    defaultConfig {
+        applicationId "com.MulticraftFreelife"
+        minSdkVersion 17
+        targetSdkVersion 25
+        versionCode 10
+        versionName "2.0"
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile 'com.android.support:appcompat-v7:25.3.0'
+    compile 'com.android.support:design:25.3.0'
+    compile 'com.android.support:multidex:1.0.1'
+    compile 'com.google.android.gms:play-services-ads:10.2.1'
+    compile 'com.google.android.gms:play-services-location:10.2.1'
+
+    compile files('libs/appodeal-1.15.9.jar')
+    compile files('libs/applovin-6.3.0.jar')
+    compile files('libs/chartboost-6.6.1.jar')
+    compile files('libs/flurry-analytics-6.5.0.jar')
+    compile files('libs/my-target-4.5.10.jar')
+    compile files('libs/yandex-metrica-2.62.jar')
+    compile files('libs/unity-ads-2.0.4.jar')
+
+    compile project(':cheetah-mobile-3.4.7')
+}
