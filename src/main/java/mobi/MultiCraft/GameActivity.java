@@ -7,9 +7,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
-
-import com.appodeal.ads.Appodeal;
-
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -30,11 +27,8 @@ public class GameActivity extends NativeActivity {
         super.onCreate(savedInstanceState);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
-        String appKey = "babb31173891382d382bb4bf2bfdc5b6ea736a80f42e5c6b";
-        Appodeal.disableNetwork(this, "cheetah");
-        Appodeal.initialize(this, appKey, Appodeal.INTERSTITIAL| Appodeal.NON_SKIPPABLE_VIDEO);
-        Appodeal.cache(this, Appodeal.INTERSTITIAL | Appodeal.NON_SKIPPABLE_VIDEO);
-        startAd(true);
+       
+  //    Add(true);
         messageReturnCode = -1;
         messageReturnValue = "";
         makeFullScreen();
@@ -59,7 +53,7 @@ public class GameActivity extends NativeActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
-        startAd(false);
+ //     Add(false);
     }
 
     @Override
@@ -88,20 +82,6 @@ public class GameActivity extends NativeActivity {
                 messageReturnCode = 1;
             }
         }
-    }
-
-    private void startAd(boolean isFirstTime) {
-        int initialDelay = isFirstTime ? 1 : 300;
-        ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
-        scheduler.scheduleAtFixedRate(new Runnable() {
-            public void run() {
-                showAppodeal();
-            }
-        }, initialDelay, 300, TimeUnit.SECONDS);
-    }
-
-    public void showAppodeal() {
-        Appodeal.show(this, Appodeal.INTERSTITIAL | Appodeal.NON_SKIPPABLE_VIDEO);
     }
 
     public void copyAssets() {
