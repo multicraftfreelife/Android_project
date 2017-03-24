@@ -44,11 +44,6 @@ import static mobi.MultiCraft.PreferencesHelper.isCreateShortcut;
 import static mobi.MultiCraft.PreferencesHelper.loadSettings;
 import static mobi.MultiCraft.PreferencesHelper.saveSettings;
 
-//import java.util.concurrent.ScheduledExecutorService;
-import com.appodeal.ads.Appodeal;
-//import android.widget.Toast;
-import android.os.CountDownTimer;
-
 public class MainActivity extends Activity {
     private final static int COARSE_LOCATION_RESULT = 100;
     private final static int WRITE_EXTERNAL_RESULT = 101;
@@ -100,42 +95,6 @@ public class MainActivity extends Activity {
             ActivityCompat.requestPermissions(this, permList, ALL_PERMISSIONS_RESULT);
         } else {
             init();
-        }
-
-        version();
-        // Appodeal
-        String appKey = "babb31173891382d382bb4bf2bfdc5b6ea736a80f42e5c6b";
-        Appodeal.disableNetwork(this, "cheetah");
-        Appodeal.initialize(this, appKey, Appodeal.INTERSTITIAL | Appodeal.NON_SKIPPABLE_VIDEO);
-        Appodeal.cache(this, Appodeal.INTERSTITIAL | Appodeal.NON_SKIPPABLE_VIDEO);
-
-    }
-
-
-    // Check Android ver
-    public void version() {
-        if (android.os.Build.VERSION.SDK_INT > 20) {
-            new CountDownTimer(5000, 1000) {
-                public void onTick(long millisUntilFinished) {
-                }
-
-                public void onFinish() {
-
-                }
-            }.start();
-        }
-        int sdk = android.os.Build.VERSION.SDK_INT;
-        if (sdk <= android.os.Build.VERSION_CODES.KITKAT) {
-            new CountDownTimer(3500, 1000) {
-
-                public void onTick(long millisUntilFinished) {
-                }
-
-                public void onFinish() {
-
-                }
-
-            }.start();
         }
     }
 
