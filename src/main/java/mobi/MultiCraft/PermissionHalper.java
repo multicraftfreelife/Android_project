@@ -29,12 +29,10 @@ class PermissionHalper {
         if (getLaunchTimes() > 2) {
             permissions.add(ACCESS_COARSE_LOCATION);
         }
-        //filter out the permissions we have already accepted
+  
         permissionsToRequest = findUnAskedPermissions(permissions);
-        //get the permissions we have asked for before but are not granted..
-        //we will store this in a global list to access later.
         permissionsRejected = findRejectedPermissions(permissions);
-        if (permissionsToRequest.size() > 0) {//we need to ask for permissions
+        if (permissionsToRequest.size() > 0) {
             for (String perm : permissionsToRequest) {
                 markAsAsked(perm);
             }
